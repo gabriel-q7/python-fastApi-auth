@@ -5,11 +5,11 @@
   - [ ] Correct environment variables (JWT_SECRET, JWT_ALGORITHM)
   - [ ] Update actual API endpoints (remove non-existent ones)
   - [ ] Document PATCH /users/me endpoint
-- [ ] Setup pytest framework
-  - [ ] Install pytest, pytest-asyncio, httpx
-  - [ ] Create tests/ directory structure
-  - [ ] Write tests for auth endpoints
-  - [ ] Write tests for user endpoints
+- [x] Setup pytest framework
+  - [x] Install pytest, pytest-asyncio, httpx
+  - [x] Create tests/ directory structure
+  - [x] Write tests for auth endpoints
+  - [x] Write tests for user endpoints
 
 ## Medium Priority
 - [ ] Test Docker container thoroughly
