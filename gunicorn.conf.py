@@ -4,7 +4,7 @@ import multiprocessing
 import os
 
 # Server socket
-bind = "0.0.0.0:8000"
+bind = "0.0.0.0:8008"
 
 # Worker processes
 workers = int(os.getenv("GUNICORN_WORKERS", multiprocessing.cpu_count() + 1))

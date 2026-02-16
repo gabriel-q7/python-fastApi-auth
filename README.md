@@ -97,8 +97,8 @@ A modern REST API built with FastAPI featuring user authentication and authoriza
    gunicorn app.main:app -c gunicorn.conf.py
    ```
 
-   The API will be available at `http://localhost:8000`
-   Swagger documentation: `http://localhost:8000/docs`
+   The API will be available at `http://localhost:8008`
+   Swagger documentation: `http://localhost:8008/docs`
 
 ### Using Docker
 
@@ -121,7 +121,7 @@ A modern REST API built with FastAPI featuring user authentication and authoriza
    docker-compose logs -f api
    ```
 
-The API will be available at `http://localhost:8000`
+The API will be available at `http://localhost:8008`
 
 Note: Migrations are automatically applied on container startup.
 

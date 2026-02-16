@@ -11,5 +11,5 @@ if [ "$APP_ENV" = "production" ]; then
     exec gunicorn app.main:app -c gunicorn.conf.py
 else
     echo "Starting Uvicorn directly (Development mode)..."
-    exec uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    exec uvicorn app.main:app --host 0.0.0.0 --port 8008 --reload
 fi

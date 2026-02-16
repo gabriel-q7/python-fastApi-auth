@@ -13,6 +13,6 @@ COPY . .
 # Make the start script executable
 RUN chmod +x start.sh
 
-EXPOSE 8000
+EXPOSE 8008
 
 CMD ["./start.sh"]

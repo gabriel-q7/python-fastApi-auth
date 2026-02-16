@@ -5,7 +5,6 @@
   - [ ] Correct environment variables (JWT_SECRET, JWT_ALGORITHM)
   - [ ] Update actual API endpoints (remove non-existent ones)
   - [ ] Document PATCH /users/me endpoint
-- [ ] Create .env.example file with required variables
 - [ ] Setup pytest framework
   - [ ] Install pytest, pytest-asyncio, httpx
   - [ ] Create tests/ directory structure
