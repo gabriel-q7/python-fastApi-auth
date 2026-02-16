@@ -86,8 +86,15 @@ A modern REST API built with FastAPI featuring user authentication and authoriza
    ```
 
 6. **Start the application:**
+   
+   **Development mode (with auto-reload):**
    ```bash
    uvicorn app.main:app --reload
+   ```
+
+   **Production mode:**
+   ```bash
+   gunicorn app.main:app -c gunicorn.conf.py
    ```
 
    The API will be available at `http://localhost:8000`
@@ -96,16 +103,27 @@ A modern REST API built with FastAPI featuring user authentication and authoriza
 ### Using Docker
 
 1. **Build and run with Docker Compose:**
+   
+   **Development mode (with hot-reload):**
    ```bash
    docker-compose up -d
    ```
+   This uses Uvicorn directly with auto-reload enabled.
 
-2. **Run migrations:**
+   **Production mode:**
    ```bash
-   docker-compose exec web alembic upgrade head
+   docker-compose -f docker-compose.prod.yml up -d
+   ```
+   This uses Gunicorn with Uvicorn workers for better performance.
+
+2. **View logs:**
+   ```bash
+   docker-compose logs -f api
    ```
 
 The API will be available at `http://localhost:8000`
+
+Note: Migrations are automatically applied on container startup.
 
 ## API Endpoints
 
@@ -145,6 +163,7 @@ Key environment variables to configure:
 - `SECRET_KEY` - Secret key for JWT token signing
 - `ALGORITHM` - Algorithm for JWT encoding (default: HS256)
 - `ACCESS_TOKEN_EXPIRE_MINUTES` - Token expiration time
+- `APP_ENV` - Environment mode (`local` for development, `production` for production)
 
 ## Development
 

@@ -7,5 +7,6 @@ class Settings(BaseSettings):
     JWT_SECRET: str
     JWT_ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
+    GUNICORN_WORKERS: int | None = None
 
 settings = Settings()

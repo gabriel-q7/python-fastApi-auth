@@ -14,15 +14,13 @@ services:
     build: .
     env_file: .env
     environment:
-      APP_ENV: local
+      APP_ENV: production
     depends_on:
       - db
     ports:
       - "8000:8000"
     volumes:
       - ./logs:/app/logs
-      - ./app:/app/app
-      - ./alembic:/app/alembic
 
 volumes:
   pgdata:
