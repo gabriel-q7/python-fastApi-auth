@@ -1,10 +1,10 @@
 # Phase 1: Foundation & Setup
 
 ## High Priority
-- [ ] Fix README.md documentation
-  - [ ] Correct environment variables (JWT_SECRET, JWT_ALGORITHM)
-  - [ ] Update actual API endpoints (remove non-existent ones)
-  - [ ] Document PATCH /users/me endpoint
+- [x] Fix README.md documentation
+  - [x] Correct environment variables (JWT_SECRET, JWT_ALGORITHM)
+  - [x] Update actual API endpoints (remove non-existent ones)
+  - [x] Document PATCH /users/me endpoint
 - [x] Setup pytest framework
   - [x] Install pytest, pytest-asyncio, httpx
   - [x] Create tests/ directory structure

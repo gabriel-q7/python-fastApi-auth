@@ -75,8 +75,8 @@ A modern REST API built with FastAPI featuring user authentication and authoriza
    Create a `.env` file in the root directory with your configuration:
    ```
    DATABASE_URL=sqlite:///./test.db
-   SECRET_KEY=your-secret-key-here
-   ALGORITHM=HS256
+   JWT_SECRET=your-secret-key-here
+   JWT_ALGORITHM=HS256
    ACCESS_TOKEN_EXPIRE_MINUTES=30
    ```
 
@@ -130,13 +130,12 @@ Note: Migrations are automatically applied on container startup.
 ### Authentication (`/auth`)
 - `POST /auth/login` - Login with credentials
 - `POST /auth/register` - Create a new user account
-- `POST /auth/refresh` - Refresh access token
 
 ### Users (`/users`)
-- `GET /users/me` - Get current user information
-- `GET /users/{user_id}` - Get user by ID
-- `PUT /users/{user_id}` - Update user information
-- `DELETE /users/{user_id}` - Delete user account
+- `GET /users/me` - Get current user information (requires authentication)
+- `PATCH /users/me` - Update current user's profile (requires authentication)
+  - Request body: `{"full_name": "string"}`
+  - Updates the authenticated user's full name
 
 ## Database Migrations
 
@@ -160,8 +159,8 @@ alembic downgrade -1
 Key environment variables to configure:
 
 - `DATABASE_URL` - Database connection string
-- `SECRET_KEY` - Secret key for JWT token signing
-- `ALGORITHM` - Algorithm for JWT encoding (default: HS256)
+- `JWT_SECRET` - Secret key for JWT token signing
+- `JWT_ALGORITHM` - Algorithm for JWT encoding (default: HS256)
 - `ACCESS_TOKEN_EXPIRE_MINUTES` - Token expiration time
 - `APP_ENV` - Environment mode (`local` for development, `production` for production)
 
