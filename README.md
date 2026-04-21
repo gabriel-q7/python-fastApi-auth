@@ -7,8 +7,7 @@ A modern REST API built with FastAPI featuring user authentication and authoriza
 - 🔐 User authentication with JWT tokens
 - 👤 User management system
 - 🗄️ SQLAlchemy ORM with Alembic migrations
-- 🐳 Docker and Docker Compose support
-- 📝 OpenAPI/Swagger documentation
+-  OpenAPI/Swagger documentation
 - 🔒 Password hashing and security best practices
 
 ## Project Structure
@@ -36,8 +35,7 @@ A modern REST API built with FastAPI featuring user authentication and authoriza
 ├── alembic/
 │   ├── env.py                  # Alembic environment configuration
 │   └── versions/               # Database migration scripts
-├── Dockerfile                  # Docker image configuration
-├── docker-compose.yml          # Docker Compose services
+├── data/                       # SQLite database storage
 ├── alembic.ini                 # Alembic configuration
 ├── requirements.txt            # Python dependencies
 └── README.md                   # This file
@@ -45,14 +43,12 @@ A modern REST API built with FastAPI featuring user authentication and authoriza
 
 ## Prerequisites
 
-- Python 3.9+
+- Python 3.12 or 3.13 (Note: Python 3.14+ has compatibility issues with pydantic)
 - pip or pip3
-- Docker and Docker Compose (optional)
-- PostgreSQL or SQLite
 
 ## Installation
 
-### Using pip (Local Development)
+### Local Development
 
 1. **Clone the repository:**
    ```bash
@@ -63,7 +59,7 @@ A modern REST API built with FastAPI featuring user authentication and authoriza
 2. **Create a virtual environment:**
    ```bash
    python -m venv .venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
    ```
 
 3. **Install dependencies:**
@@ -72,9 +68,9 @@ A modern REST API built with FastAPI featuring user authentication and authoriza
    ```
 
 4. **Configure environment variables:**
-   Create a `.env` file in the root directory with your configuration:
+   Create a `.env` file in the root directory with your configuration (or copy from `.env.example`):
    ```
-   DATABASE_URL=sqlite:///./test.db
+   DATABASE_URL=sqlite:///./data/app.db
    JWT_SECRET=your-secret-key-here
    JWT_ALGORITHM=HS256
    ACCESS_TOKEN_EXPIRE_MINUTES=30
@@ -84,6 +80,7 @@ A modern REST API built with FastAPI featuring user authentication and authoriza
    ```bash
    alembic upgrade head
    ```
+   This will create the SQLite database file at `data/app.db` with all necessary tables.
 
 6. **Start the application:**
    
@@ -99,31 +96,6 @@ A modern REST API built with FastAPI featuring user authentication and authoriza
 
    The API will be available at `http://localhost:8008`
    Swagger documentation: `http://localhost:8008/docs`
-
-### Using Docker
-
-1. **Build and run with Docker Compose:**
-   
-   **Development mode (with hot-reload):**
-   ```bash
-   docker-compose up -d
-   ```
-   This uses Uvicorn directly with auto-reload enabled.
-
-   **Production mode:**
-   ```bash
-   docker-compose -f docker-compose.prod.yml up -d
-   ```
-   This uses Gunicorn with Uvicorn workers for better performance.
-
-2. **View logs:**
-   ```bash
-   docker-compose logs -f api
-   ```
-
-The API will be available at `http://localhost:8008`
-
-Note: Migrations are automatically applied on container startup.
 
 ## API Endpoints
 
@@ -158,10 +130,10 @@ alembic downgrade -1
 
 Key environment variables to configure:
 
-- `DATABASE_URL` - Database connection string
-- `JWT_SECRET` - Secret key for JWT token signing
+- `DATABASE_URL` - Database connection string (SQLite: `sqlite:///./data/app.db`)
+- `JWT_SECRET` - Secret key for JWT token signing (change in production!)
 - `JWT_ALGORITHM` - Algorithm for JWT encoding (default: HS256)
-- `ACCESS_TOKEN_EXPIRE_MINUTES` - Token expiration time
+- `ACCESS_TOKEN_EXPIRE_MINUTES` - Token expiration time (default: 30)
 - `APP_ENV` - Environment mode (`local` for development, `production` for production)
 
 ## Development

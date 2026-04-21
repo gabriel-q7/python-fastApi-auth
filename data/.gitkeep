@@ -1,0 +1,2 @@
+# This directory stores the SQLite database file (app.db)
+# The database file is git-ignored but this directory is tracked

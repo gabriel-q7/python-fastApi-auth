@@ -35,7 +35,7 @@ API_BASE_URL=http://localhost:8001 ./test-auth.sh
 ### Requirements
 
 - `curl` command installed
-- API server running (use `uvicorn app.main:app --reload` or `docker-compose up`)
+- API server running (use `uvicorn app.main:app --reload`)
 - Python 3 for JSON formatting (optional, for prettier output)
 
 ### Example Output

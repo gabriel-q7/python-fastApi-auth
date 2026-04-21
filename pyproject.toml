@@ -8,7 +8,6 @@ dependencies = [
     "gunicorn==23.0.0",
     "uvicorn==0.34.0",
     "SQLAlchemy>=2.0.40",
-    "psycopg[binary]==3.3.2",
     "alembic==1.14.1",
     "pydantic>=2.10.6",
     "pydantic-settings>=2.8.0",

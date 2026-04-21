@@ -1,6 +1,11 @@
+import sys
+from pathlib import Path
 from logging.config import fileConfig
 from alembic import context
 from sqlalchemy import engine_from_config, pool
+
+# Add the project root to Python path so 'app' module can be imported
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from app.core.config import settings
 from app.db.base import Base

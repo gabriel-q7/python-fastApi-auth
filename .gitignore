@@ -146,6 +146,11 @@ Thumbs.db
 *.sqlite3
 test_db/
 
+# SQLite database files
+data/*.db
+data/*.sqlite
+data/*.sqlite3
+
 # Local development
 local/
 temp/
